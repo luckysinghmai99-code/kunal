@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" role="img" aria-label="RAILDESIGN AI logo">
+  <defs><linearGradient id="rdg" x1="0" x2="1"><stop offset="0" stop-color="#6d5dfc"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+  <path d="M32 20C22 4 4 4 4 20s18 16 28 0 26-16 28 0-18 16-28 0z" fill="none" stroke="url(#rdg)" stroke-width="5" stroke-linecap="round"/>
+  <rect x="26" y="16" width="12" height="8" rx="2" fill="url(#rdg)"/>
+</svg>

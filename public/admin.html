@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · RAILDESIGN AI</title>
+  <meta name="description" content="Admin dashboard for RAILDESIGN AI.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page-init="admin">
+  <div id="site-header"></div>
+  <main class="container">
+    <h1>Admin</h1>
+    <div class="wallet-strip" id="admin-stats" style="margin:14px 0"></div>
+    <div class="grid">
+      <div class="card">
+        <h3>Grant tokens</h3>
+        <form class="stack" id="grant-form">
+          <label>User ID <input name="userId" required placeholder="usr_..."></label>
+          <label>Tokens <input name="amount" type="number" min="1" max="100000" required></label>
+          <label>Reason <input name="reason" required maxlength="200"></label>
+          <button class="btn primary small" type="submit">Grant</button>
+          <div class="form-msg" role="status" id="grant-msg"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Token packages (JSON)</h3>
+        <textarea id="packages-json" style="min-height:220px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem"></textarea>
+        <div class="row" style="margin-top:8px"><button class="btn primary small" id="save-packages" type="button">Save packages</button><span class="form-msg" id="packages-msg"></span></div>
+      </div>
+    </div>
+    <h3 style="margin-top:22px">Users</h3>
+    <div style="overflow-x:auto"><table class="data" id="users-table"><thead><tr><th>ID</th><th>Email</th><th>Role</th><th>Balance</th><th>Reserved</th></tr></thead><tbody></tbody></table></div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

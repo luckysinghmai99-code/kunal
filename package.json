@@ -1,0 +1,17 @@
+{
+  "name": "raildesign-ai",
+  "version": "1.0.0",
+  "description": "RAILDESIGN AI: AI design and coding portal with six engines, token wallet and Razorpay payments.",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

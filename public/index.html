@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design and build with AI · RAILDESIGN AI</title>
+  <meta name="description" content="RAILDESIGN AI turns a plain-language brief into a working, tested website or app.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page-init="home">
+  <div id="site-header"></div>
+  <main class="container">
+    <section class="hero">
+      <div class="gradient-text" style="font-weight:800;letter-spacing:.08em;font-size:.85rem">AI DESIGN AND CODING PORTAL</div>
+      <h1>Describe it. <span class="gradient-text">We build it.</span></h1>
+      <p>Write what you want in English or Hindi. RAILDESIGN AI plans the pages, designs the system, writes the code, tests it, and packages a ZIP you can deploy.</p>
+      <div class="prompt-box">
+        <textarea id="home-prompt" aria-label="Describe your project" placeholder="e.g. Create an ecommerce store with products, cart and checkout in violet and dark mode. / एक रेलवे टिकट बुकिंग पोर्टल बनाओ नीले रंग में."></textarea>
+        <div class="row" style="justify-content:space-between;margin-top:8px">
+          <div class="chips">
+            <span class="chip" data-fill="Create an ecommerce website with products, cart and checkout.">Ecommerce</span>
+            <span class="chip" data-fill="Create a school management portal with login and dashboard.">School portal</span>
+            <span class="chip" data-fill="Create a SaaS landing page with pricing and signup, in teal.">SaaS landing</span>
+          </div>
+          <a class="btn primary" id="start-creating" href="/signup">Start creating</a>
+        </div>
+      </div>
+      <p class="muted" style="font-size:.85rem;margin-top:12px">New accounts get 50 starter tokens. No card needed.</p>
+    </section>
+
+    <section class="section">
+      <h2>Live design preview</h2>
+      <p>Every generated project opens in a sandboxed preview with desktop, tablet and mobile views.</p>
+      <div class="grid">
+        <div class="card"><h3>Desktop</h3><p>Full-width layouts with a sticky header and responsive grids.</p></div>
+        <div class="card"><h3>Tablet</h3><p>Cards reflow to two columns and navigation stays reachable.</p></div>
+        <div class="card"><h3>Mobile</h3><p>Stacked sections, larger tap targets and reduced motion when requested.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Popular categories</h2>
+      <div class="grid">
+        <div class="card"><h3>Ecommerce</h3><p>Catalog, cart and checkout pages wired to a product table.</p></div>
+        <div class="card"><h3>Railway and travel booking</h3><p>Search, booking forms and a bookings table with status tracking.</p></div>
+        <div class="card"><h3>Admin and banking dashboards</h3><p>Stats cards, data tables and settings screens.</p></div>
+        <div class="card"><h3>SaaS and portfolios</h3><p>Landing pages, pricing tables, FAQs and contact forms.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Featured templates</h2>
+      <p>Start from a template, then describe your changes. <a href="/templates">Browse all templates</a>.</p>
+    </section>
+
+    <section class="section">
+      <h2>Pricing preview</h2>
+      <div class="grid" id="home-packages"></div>
+      <p><a href="/pricing">See full pricing</a></p>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

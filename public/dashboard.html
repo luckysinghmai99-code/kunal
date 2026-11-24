@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · RAILDESIGN AI</title>
+  <meta name="description" content="Your RAILDESIGN AI dashboard.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-page-init="dashboard">
+  <div id="site-header"></div>
+  <main class="container">
+    <div class="app-shell" style="margin:-24px -20px">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="group">Workspace</div>
+        <a href="#overview" data-view="overview" class="active">Overview</a>
+        <a href="#projects" data-view="projects">My projects</a>
+        <a href="#wallet" data-view="wallet">Tokens and billing</a>
+        <a href="#account" data-view="account">Account settings</a>
+        <div class="group">More</div>
+        <a href="/studio">AI Design Studio</a>
+        <a href="/templates">Templates</a>
+        <a href="/admin" class="hidden" id="admin-link">Admin</a>
+      </aside>
+      <section class="main">
+        <div id="view-overview" class="view">
+          <h1 style="font-size:1.6rem">Welcome, <span id="welcome-name">there</span></h1>
+          <div class="wallet-strip" id="wallet-strip" style="margin:14px 0"></div>
+          <div class="card" style="margin-bottom:18px">
+            <h3>New project</h3>
+            <label>Project name <input id="new-name" maxlength="80" placeholder="My store"></label>
+            <label style="margin-top:10px">Describe it <textarea id="new-prompt" placeholder="Describe the project in English or Hindi."></textarea></label>
+            <div class="row" style="margin-top:10px"><button class="btn primary" id="create-btn" type="button">Create project</button><span class="muted" id="create-msg"></span></div>
+          </div>
+          <h3>Recent projects</h3>
+          <div id="recent-projects"></div>
+        </div>
+
+        <div id="view-projects" class="view hidden">
+          <div class="split">
+            <div>
+              <div class="row" style="margin-bottom:10px"><h2 style="font-size:1.2rem;margin:0">Projects</h2><span class="spacer"></span><button class="btn small" id="new-project-quick" type="button">+ New</button></div>
+              <div id="project-list"></div>
+            </div>
+            <div id="workspace" class="card hidden">
+              <div class="row">
+                <h2 id="ws-name" style="font-size:1.3rem;margin:0"></h2>
+                <span class="spacer"></span>
+                <button class="btn small" id="ws-rename" type="button">Rename</button>
+                <button class="btn small" id="ws-duplicate" type="button">Duplicate</button>
+                <button class="btn small primary" id="ws-download" type="button">Download ZIP</button>
+                <button class="btn small danger" id="ws-delete" type="button">Delete</button>
+              </div>
+              <div class="row" style="margin-top:14px;align-items:stretch">
+                <textarea id="ws-prompt" aria-label="Instruction" placeholder="Describe a new feature or a change. Example: Add a pricing page in gold."></textarea>
+              </div>
+              <div class="row" style="margin-top:8px">
+                <button class="btn small" id="ws-estimate" type="button">Estimate tokens</button>
+                <button class="btn small primary" id="ws-generate" type="button">Generate</button>
+                <span id="ws-estimate-out" class="muted"></span>
+              </div>
+              <div id="ws-progress" class="hidden" style="margin-top:14px">
+                <div class="progress"><span id="ws-bar" style="width:0%"></span></div>
+                <div class="log" id="ws-log" style="margin-top:8px"></div>
+                <div class="row" style="margin-top:8px"><button class="btn small hidden" id="ws-resume" type="button">Resume failed job</button></div>
+              </div>
+
+              <div class="row" style="margin-top:18px">
+                <h3 style="margin:0">Preview</h3><span class="spacer"></span>
+                <div class="viewport-btns" role="group" aria-label="Viewport">
+                  <button class="btn small" data-vp="100%" type="button">Desktop</button>
+                  <button class="btn small" data-vp="768px" type="button">Tablet</button>
+                  <button class="btn small" data-vp="390px" type="button">Mobile</button>
+                  <a class="btn small" id="ws-fullscreen" target="_blank" rel="noopener">Fullscreen</a>
+                  <button class="btn small" id="ws-refresh" type="button">Refresh</button>
+                </div>
+              </div>
+              <iframe class="preview-frame" id="ws-frame" title="Live preview" loading="lazy"></iframe>
+
+              <div class="split" style="margin-top:18px;grid-template-columns:1fr 2fr">
+                <div>
+                  <h3>Files</h3>
+                  <div id="ws-files" class="log" style="max-height:260px"></div>
+                  <h3 style="margin-top:14px">Versions</h3>
+                  <div id="ws-versions" class="muted"></div>
+                </div>
+                <div>
+                  <h3>Edit file</h3>
+                  <div class="row"><span id="ws-file-name" class="badge"></span><span class="spacer"></span><button class="btn small primary" id="ws-save-file" type="button">Save file</button></div>
+                  <textarea id="ws-file-content" style="min-height:280px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;margin-top:8px" aria-label="File content"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-wallet" class="view hidden">
+          <h1 style="font-size:1.5rem">Tokens and billing</h1>
+          <div class="wallet-strip" id="wallet-strip-2" style="margin:12px 0"></div>
+          <p class="muted">Starter tokens are granted once per account. Purchased tokens are added only after Razorpay verifies the payment.</p>
+          <div class="grid" id="buy-packages" style="margin:14px 0"></div>
+          <h3>Token ledger</h3>
+          <div style="overflow-x:auto"><table class="data" id="ledger-table"><thead><tr><th>When</th><th>Type</th><th>Amount</th><th>Balance after</th><th>Note</th></tr></thead><tbody></tbody></table></div>
+          <h3 style="margin-top:20px">Payments</h3>
+          <div style="overflow-x:auto"><table class="data" id="payments-table"><thead><tr><th>When</th><th>Package</th><th>Amount</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+        </div>
+
+        <div id="view-account" class="view hidden">
+          <h1 style="font-size:1.5rem">Account settings</h1>
+          <div class="grid" style="margin-top:14px">
+            <div class="card">
+              <h3>Profile</h3>
+              <form class="stack" data-api="/api/me" data-method="PUT" data-success="Profile saved.">
+                <label>Name <input name="name" id="profile-name" required maxlength="80"></label>
+                <label>Email <input id="profile-email" disabled></label>
+                <div><button class="btn primary small" type="submit">Save profile</button></div>
+                <div class="form-msg" role="status"></div>
+              </form>
+            </div>
+            <div class="card">
+              <h3>Change password</h3>
+              <form class="stack" data-api="/api/me/password" data-method="PUT" data-success="Password changed.">
+                <label>Current password <input name="currentPassword" type="password" required autocomplete="current-password"></label>
+                <label>New password <input name="newPassword" type="password" required minlength="8" autocomplete="new-password"></label>
+                <div><button class="btn primary small" type="submit">Update password</button></div>
+                <div class="form-msg" role="status"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

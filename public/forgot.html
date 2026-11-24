@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forgot password · RAILDESIGN AI</title>
+  <meta name="description" content="Enter your email and we will send a reset link.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container">
+    <section class="auth-wrap"><div class="card auth-card">
+      <h1 style="font-size:1.8rem">Reset your password</h1>
+      <p>Enter your email and we will send a reset link.</p>
+      <form class="stack" data-api="/api/auth/forgot">
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <button class="btn primary" type="submit">Send reset link</button>
+        <div class="form-msg" role="status"></div>
+      </form>
+      <p class="muted" style="margin-top:14px"><a href="/login">Back to log in</a></p>
+    </div></section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose a new password · RAILDESIGN AI</title>
+  <meta name="description" content="Set a new password. The link works once and expires after one hour.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container">
+    <section class="auth-wrap"><div class="card auth-card">
+      <h1 style="font-size:1.8rem">Choose a new password</h1>
+      <p>Set a new password. The link works once and expires after one hour.</p>
+      <form class="stack" data-api="/api/auth/reset" data-redirect="/login">
+        <input type="hidden" name="token" id="reset-token">
+        <label>New password <input name="password" type="password" required minlength="8" autocomplete="new-password"></label>
+        <button class="btn primary" type="submit">Update password</button>
+        <div class="form-msg" role="status"></div>
+      </form>
+      <p class="muted" style="margin-top:14px"></p>
+    </div></section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  <script src="/js/reset.js"></script>
+</body>
+</html>

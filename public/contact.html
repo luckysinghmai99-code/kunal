@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · RAILDESIGN AI</title>
+  <meta name="description" content="Contact RAILDESIGN AI.">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container">
+    <h1>Contact</h1>
+    <p>Questions about billing, your project, or the platform? Send a message and we will reply by email.</p>
+    <form class="stack" data-api="/api/contact" data-success="Thanks. We will reply soon.">
+      <label>Name <input name="name" maxlength="120" autocomplete="name"></label>
+      <label>Email <input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+      <label>Message <textarea name="message" required minlength="5" maxlength="5000"></textarea></label>
+      <div><button class="btn primary" type="submit">Send message</button></div>
+      <div class="form-msg" role="status"></div>
+    </form>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/common.js"></script>
+  
+</body>
+</html>
